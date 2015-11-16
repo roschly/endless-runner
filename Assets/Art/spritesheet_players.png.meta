@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 4a157e0f24f71a14d874b42535ff4dd1
-timeCreated: 1445869799
+timeCreated: 1447672989
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -8,6 +8,7 @@ TextureImporter:
     21300002: spritesheet_players_1
     21300004: spritesheet_players_2
     21300006: spritesheet_players_3
+    21300008: spritesheet_players_4
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -90,6 +91,16 @@ TextureImporter:
         y: 512
         width: 108
         height: 152
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet_players_4
+      rect:
+        serializedVersion: 2
+        x: 777
+        y: 768
+        width: 112
+        height: 117
       alignment: 7
       pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
