@@ -5,7 +5,7 @@ public class PlayerController : MonoBehaviour {
 
 	public float moveSpeed;
 	public float jumpForce;
-	public bool grounded;
+	private bool grounded;
 	public LayerMask WhatIsGround;
 
 	private Rigidbody2D myRigidbody;

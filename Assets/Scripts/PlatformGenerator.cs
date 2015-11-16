@@ -8,12 +8,14 @@ public class PlatformGenerator : MonoBehaviour {
 	public float distanceBetweenMin;
 	public float distanceBetweenMax;
 	public ObjectPooler theObjectPool;
-	public GameObject[] thePlatforms;
+	//public GameObject[] thePlatforms;
 
 	private float platformWidth;
 	private float distanceBetween;
 	private float[] platformWidths;
 	private float lastPlacedPlatformWidth;
+
+    public ObjectPooler[] theObjectPools;
 
 
 	private int platformSelector;
@@ -21,10 +23,10 @@ public class PlatformGenerator : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		platformWidths = new float[thePlatforms.Length];
+		platformWidths = new float[theObjectPools.Length];
 
 		for (int i = 0; i < platformWidths.Length; i++) {
-			platformWidths[i] = thePlatforms[i].GetComponent<BoxCollider2D>().size.x;
+			platformWidths[i] = theObjectPools[i].pooledObject.GetComponent<BoxCollider2D>().size.x;
 		}
 
 		lastPlacedPlatformWidth = 7;
@@ -37,7 +39,7 @@ public class PlatformGenerator : MonoBehaviour {
 		if (transform.position.x < generationPoint.position.x) {
 			distanceBetween = Random.Range(distanceBetweenMin, distanceBetweenMax);
 
-			platformSelector = Random.Range(0, thePlatforms.Length);
+			platformSelector = Random.Range(0, theObjectPools.Length);
 
 			float distanceToMove = platformWidths[platformSelector]/2 + lastPlacedPlatformWidth/2 + distanceBetween;
 
@@ -45,11 +47,12 @@ public class PlatformGenerator : MonoBehaviour {
 			                                 transform.position.y, transform.position.z);
 
 
-			Instantiate(thePlatforms[platformSelector], transform.position, transform.rotation);
-			//GameObject newPlatform = theObjectPool.getPooledObject();
-			//newPlatform.transform.position = transform.position;
-			//newPlatform.transform.rotation = transform.rotation;
-			//newPlatform.SetActive(true);
+			//Instantiate(thePlatforms[platformSelector], transform.position, transform.rotation);
+
+			GameObject newPlatform = theObjectPools[platformSelector].getPooledObject();
+			newPlatform.transform.position = transform.position;
+			newPlatform.transform.rotation = transform.rotation;
+			newPlatform.SetActive(true);
 
 			lastPlacedPlatformWidth = platformWidths[platformSelector];
 		}
